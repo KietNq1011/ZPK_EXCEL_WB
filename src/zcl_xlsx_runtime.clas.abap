@@ -73,21 +73,6 @@ CLASS zcl_xlsx_runtime DEFINITION
       RETURNING VALUE(rs_file) TYPE ty_file
       RAISING   zcx_xlsx.
 
-    "! Instance source class của form (dùng lại được cho get_sample)
-    CLASS-METHODS get_source_handler
-      IMPORTING iv_form_name     TYPE string
-      RETURNING VALUE(ro_source) TYPE REF TO zif_xlsx_source
-      RAISING   zcx_xlsx.
-
-    "! Form đã có template trong bảng chưa (active + có nội dung)
-    CLASS-METHODS exists_in_table
-      IMPORTING iv_form_name     TYPE string
-      RETURNING VALUE(rv_exists) TYPE abap_bool.
-
-    "! Danh sách template đang active (dùng cho value help / kiểm tra cấu hình)
-    CLASS-METHODS list_active
-      RETURNING VALUE(rt_forms) TYPE string_table.
-
     "! Xoá cache template trong session (gọi sau khi sửa template)
     CLASS-METHODS clear_cache.
 
@@ -115,6 +100,17 @@ CLASS zcl_xlsx_runtime DEFINITION
       IMPORTING iv_form_name    TYPE string
       RETURNING VALUE(rs_cache) TYPE ty_cache
       RAISING   zcx_xlsx.
+
+    "! Instance source class của form (cột SOURCE_CLASS) — dùng cho render_by_source
+    CLASS-METHODS get_source_handler
+      IMPORTING iv_form_name     TYPE string
+      RETURNING VALUE(ro_source) TYPE REF TO zif_xlsx_source
+      RAISING   zcx_xlsx.
+
+    "! Form đã có template trong bảng chưa (active + có nội dung) — dùng cho render_prefer_table
+    CLASS-METHODS exists_in_table
+      IMPORTING iv_form_name     TYPE string
+      RETURNING VALUE(rv_exists) TYPE abap_bool.
 
     "! Render SSML rồi chuyển kết quả sang .xlsx (zcl_xlsx_ssml2xlsx).
     "! Chuyển lỗi thì trả bản SpreadsheetML gốc (.xls) kèm ghi chú trong SOURCE.
@@ -357,17 +353,5 @@ CLASS ZCL_XLSX_RUNTIME IMPLEMENTATION.
 
   METHOD clear_cache.
     CLEAR mt_cache.
-  ENDMETHOD.
-
-
-  METHOD list_active.
-    SELECT form_name FROM zxlsx_tmpl
-      WHERE is_active = @abap_true
-      ORDER BY form_name
-      INTO TABLE @DATA(lt_names).
-
-    LOOP AT lt_names INTO DATA(ls).
-      APPEND CONV string( ls-form_name ) TO rt_forms.
-    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.

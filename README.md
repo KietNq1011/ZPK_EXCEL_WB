@@ -7,17 +7,15 @@ Gom framework từ hai repo trước đây:
 - [ZPK_XLSX](https://github.com/KietNq1011/ZPK_XLSX) (commit `9d3eb9e`): engine, runtime, app quản lý template.
 - [ZPK_XLSX_ATT](https://github.com/KietNq1011/ZPK_XLSX_ATT) (commit `8de31de`): `ZCL_XLSX_SOURCE_BASE`, `ZCL_XLSX_ATT_EXPORT`.
 
-Tên object giữ nguyên (`ZCL_XLSX_*`, `ZXLSX_TMPL`…), chỉ đổi package. App mẫu (Travel, ZDMO01) không nằm ở đây.
+Tên object giữ nguyên (`ZCL_XLSX_*`, `ZXLSX_TMPL`…), chỉ đổi package. Đã bỏ `ZCL_XLSX_API` (không nơi nào gọi).
+App mẫu (Travel, ZDMO01) không nằm ở đây.
 
 ## Package
 
-```
-ZPK_EXCEL_WB                 engine + runtime + app template + ZCL_XLSX_SOURCE_BASE
-└─ ZPK_EXCEL_WB_ATT          ZCL_XLSX_ATT_EXPORT  (cần ZPK_ATTACHMENT)
-```
+Một package `ZPK_EXCEL_WB`, không có subpackage: engine + runtime + app template + `ZCL_XLSX_SOURCE_BASE` + `ZCL_XLSX_ATT_EXPORT`.
 
-Phụ thuộc chỉ một chiều: `ZPK_ATTACHMENT` → `ZPK_EXCEL_WB` → app. Package gốc `ZPK_EXCEL_WB` không tham chiếu attachment;
-chỉ subpackage `ZPK_EXCEL_WB_ATT` dùng [`ZPK_ATTACHMENT`](https://github.com/KietNq1011/ZPK_ATTACHMENT).
+Phụ thuộc một chiều: [`ZPK_ATTACHMENT`](https://github.com/KietNq1011/ZPK_ATTACHMENT) → `ZPK_EXCEL_WB` → app.
+Chỉ `ZCL_XLSX_ATT_EXPORT` dùng attachment, nhưng vì cùng package nên phải cài `ZPK_ATTACHMENT` trước.
 
 ## Object
 
@@ -34,15 +32,14 @@ chỉ subpackage `ZPK_EXCEL_WB_ATT` dùng [`ZPK_ATTACHMENT`](https://github.com/
 | | `ZIF_XLSX_SOURCE` | Interface cho source class lấy dữ liệu thật |
 | | `ZCL_XLSX_SOURCE_BASE` | Class cha cho source class: `render`, `key_value`, `asset_b64`, template dự phòng |
 | App template | `ZXLSX_TMPL_D`, `ZR_XLSX_TMPL`, `ZC_XLSX_TMPL`, `ZBP_R_XLSX_TMPL`, `ZXLSX_A_JSON_P` | RAP BO (draft) quản lý template |
-| | `ZCL_XLSX_CTX_JSON`, `ZCL_XLSX_TMPL_UTIL`, `ZCL_XLSX_API` | JSON → context; validate / export / import template |
+| | `ZCL_XLSX_CTX_JSON`, `ZCL_XLSX_TMPL_UTIL` | JSON → context; validate / export / import template |
 | | `ZUI_XLSX_TMPL`, `ZUI_XLSX_TMPL_O4` | Service definition / binding OData V4 UI |
-| Attachment (`ZPK_EXCEL_WB_ATT`) | `ZCL_XLSX_ATT_EXPORT` | `export`: render + thay file của document trong `ZR_ATTACHMENT_DMO`; `save`: lưu file có sẵn |
+| Attachment | `ZCL_XLSX_ATT_EXPORT` | `export`: render + thay file của document trong `ZR_ATTACHMENT_DMO`; `save`: lưu file có sẵn |
 
 ## Cài đặt
 
 1. Pull + activate [`ZPK_ATTACHMENT`](https://github.com/KietNq1011/ZPK_ATTACHMENT).
 2. ADT → abapGit Repositories → Link: URL repo này, branch `main`, package `ZPK_EXCEL_WB` → Pull.
-   Folder logic `FULL`: thư mục `src/zpk_excel_wb_att` thành subpackage `ZPK_EXCEL_WB_ATT`.
 3. Activate các object còn inactive (Ctrl+Shift+F3). Lỗi thứ tự activate thì activate `ZCX_XLSX` trước.
 4. `ZUI_XLSX_TMPL_O4` → Publish → Preview để dùng app quản lý template.
 5. Người dùng thật: tạo IAM App cho `ZUI_XLSX_TMPL_O4`, gán Business Catalog / Business Role
@@ -52,11 +49,11 @@ chỉ subpackage `ZPK_EXCEL_WB_ATT` dùng [`ZPK_ATTACHMENT`](https://github.com/
 
 Object cùng tên đang nằm ở package cũ ⇒ abapGit báo object thuộc package khác. Trước khi pull:
 
-1. Tạo package `ZPK_EXCEL_WB` và subpackage `ZPK_EXCEL_WB_ATT`.
+1. Tạo package `ZPK_EXCEL_WB`.
 2. ADT → chọn object → *Change Package Assignment*:
-   - mọi object trong `ZPK_XLSX` (trừ subpackage `ZPK_XLSX_DEMO`) → `ZPK_EXCEL_WB`
-   - `ZCL_XLSX_SOURCE_BASE` (đang ở `ZPK_XLSX_ATT`) → `ZPK_EXCEL_WB`
-   - `ZCL_XLSX_ATT_EXPORT` → `ZPK_EXCEL_WB_ATT`
+   - mọi object trong `ZPK_XLSX` (trừ subpackage `ZPK_XLSX_DEMO` và `ZCL_XLSX_API`) → `ZPK_EXCEL_WB`
+   - `ZCL_XLSX_SOURCE_BASE`, `ZCL_XLSX_ATT_EXPORT` (đang ở `ZPK_XLSX_ATT`) → `ZPK_EXCEL_WB`
+   - `ZCL_XLSX_API`: xoá (repo không còn class này)
 3. Link repo này vào `ZPK_EXCEL_WB` → Pull. Dữ liệu bảng `ZXLSX_TMPL` (template đã upload) giữ nguyên vì tên bảng không đổi.
 
 ## Dùng
