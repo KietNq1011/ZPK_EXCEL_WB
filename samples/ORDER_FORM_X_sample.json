@@ -1,0 +1,46 @@
+{
+  "logo": "iVBORw0KGgoAAAANSUhEUgAAAMgAAABuCAIAAADtf8s6AAABXElEQVR42u3cyw2EMAxAwXRCDTRCPxwomRpCBQgp5IPJoHdeee05odWmZdul6iUrEFgCS2BJYAksgSWBJbAElgSWwBJYElgCS2BJYAksgSWBpWiw8s3ztS+QKz3mqTsPWGCB5ZBggQUWWGCB5ZBggQUWWGDNCmvUAcxT9vlggQWWQ4IFFlhggQWWQ4IFFlhggQXWHIeMvh+wwAILLLDAAsviwAILLLDAAsviwAIrJqzWP7gDCyywwAILLLDAAgsssMACCyywwAILLPOABRZYYIEFlnnAAgsssMACyzxggQUWWGCBZR6wwAILLLDAMg9YYIEFFlhgmacFrNaPP+z/x37AAgsssMACCyywwAILLLDAAgsssHrBkt4ElsASWALLFgSWwBJYElgCS2BJYAksgSWBpaCwzmOVHgNLYAksgQWWwBJYAgssjYYlefMusASWBJbAElgSWAJLYEkFXT8fK8A9XyZBAAAAAElFTkSuQmCC",
+  "company": {
+    "name": "CÔNG TY TNHH DEMO XLSX",
+    "address": "Tầng 5, 17 Duy Tân, Cầu Giấy, Hà Nội",
+    "taxcode": "0101234567",
+    "phone": "024 1234 5678"
+  },
+  "orderno": "PO-2026-0815",
+  "orddate": "2026-10-13",
+  "deldate": "2026-10-20",
+  "customer": {
+    "name": "Công ty CP Khách Hàng Mẫu",
+    "address": "12 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh"
+  },
+  "items": [
+    {
+      "matnr": "SLAB-WHITE-3CM",
+      "maktx": "Đá slab trắng 3cm",
+      "uom": "M2",
+      "qty": 20,
+      "price": 1050000,
+      "amount": 21000000
+    },
+    {
+      "matnr": "SLAB-GREY-2CM",
+      "maktx": "Đá slab xám 2cm",
+      "uom": "M2",
+      "qty": 15,
+      "price": 885000,
+      "amount": 13275000
+    },
+    {
+      "matnr": "SLAB-BLACK-3CM",
+      "maktx": "Đá slab đen 3cm",
+      "uom": "M2",
+      "qty": 5,
+      "price": 1200000,
+      "amount": 6000000
+    }
+  ],
+  "vat_rate": 8,
+  "vat_amount": 3222000,
+  "grand_total": 43497000,
+  "remark": "Giao hàng tại kho khách, thanh toán 30 ngày."
+}

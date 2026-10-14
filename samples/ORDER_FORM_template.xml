@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Size="10"/>
+  </Style>
+  <Style ss:ID="co">
+   <Font ss:FontName="Arial" ss:Size="11" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="title">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Size="16" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="sub">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Size="10" ss:Italic="1"/>
+  </Style>
+  <Style ss:ID="lbl">
+   <Font ss:FontName="Arial" ss:Size="10" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="dt">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <NumberFormat ss:Format="dd/mm/yyyy"/>
+  </Style>
+  <Style ss:ID="th">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Size="10" ss:Bold="1"/>
+   <Interior ss:Color="#DDEBF7" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="td">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="tdc">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="num">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <NumberFormat ss:Format="#,##0"/>
+  </Style>
+  <Style ss:ID="totl">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Size="10" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="tot">
+   <Font ss:FontName="Arial" ss:Size="10" ss:Bold="1"/>
+   <NumberFormat ss:Format="#,##0"/>
+  </Style>
+  <Style ss:ID="grand">
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Double" ss:Weight="3"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Size="11" ss:Bold="1"/>
+   <NumberFormat ss:Format="#,##0"/>
+  </Style>
+  <Style ss:ID="sign">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" ss:Size="10" ss:Bold="1"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="DonHang">
+  <Table>
+   <Column ss:AutoFitWidth="0" ss:Width="35"/>
+   <Column ss:AutoFitWidth="0" ss:Width="95"/>
+   <Column ss:AutoFitWidth="0" ss:Width="200"/>
+   <Column ss:AutoFitWidth="0" ss:Width="45"/>
+   <Column ss:AutoFitWidth="0" ss:Width="60"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:AutoFitWidth="0" ss:Width="110"/>
+   <Row>
+    <Cell ss:StyleID="co" ss:MergeAcross="3"><Data ss:Type="String">{{company.name}}</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:MergeAcross="3"><Data ss:Type="String">Địa chỉ: {{company.address}}</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:MergeAcross="3"><Data ss:Type="String">MST: {{company.taxcode}}</Data></Cell>
+   </Row>
+   <Row/>
+   <Row ss:Height="24">
+    <Cell ss:StyleID="title" ss:MergeAcross="6"><Data ss:Type="String">ĐƠN ĐẶT HÀNG</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="sub" ss:MergeAcross="6"><Data ss:Type="String">Số: {{orderno}}</Data></Cell>
+   </Row>
+   <Row/>
+   <Row>
+    <Cell ss:StyleID="lbl" ss:MergeAcross="1"><Data ss:Type="String">Khách hàng:</Data></Cell>
+    <Cell ss:MergeAcross="2"><Data ss:Type="String">{{customer.name}}</Data></Cell>
+    <Cell ss:StyleID="lbl"><Data ss:Type="String">Ngày đặt:</Data></Cell>
+    <Cell ss:StyleID="dt"><Data ss:Type="String">{{orddate}}</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="lbl" ss:MergeAcross="1"><Data ss:Type="String">Địa chỉ:</Data></Cell>
+    <Cell ss:MergeAcross="2"><Data ss:Type="String">{{customer.address}}</Data></Cell>
+    <Cell ss:StyleID="lbl"><Data ss:Type="String">Ngày giao:</Data></Cell>
+    <Cell ss:StyleID="dt"><Data ss:Type="String">{{deldate}}</Data></Cell>
+   </Row>
+   <Row/>
+   <Row ss:Height="28">
+    <Cell ss:StyleID="th"><Data ss:Type="String">STT</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">Mã hàng</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">Tên hàng</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">ĐVT</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">Số lượng</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">Đơn giá</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">Thành tiền</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="tdc"><Data ss:Type="String">{{#items}}{{@index}}</Data></Cell>
+    <Cell ss:StyleID="td"><Data ss:Type="String">{{matnr}}</Data></Cell>
+    <Cell ss:StyleID="td"><Data ss:Type="String">{{maktx}}</Data></Cell>
+    <Cell ss:StyleID="tdc"><Data ss:Type="String">{{uom}}</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="String">{{qty}}</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="String">{{price}}</Data></Cell>
+    <Cell ss:StyleID="num"><Data ss:Type="String">{{amount}}{{/items}}</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="totl" ss:MergeAcross="5"><Data ss:Type="String">Cộng tiền hàng ({{cnt:items}} dòng):</Data></Cell>
+    <Cell ss:StyleID="tot"><Data ss:Type="String">{{sum:items.amount}}</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="totl" ss:MergeAcross="5"><Data ss:Type="String">Thuế GTGT {{vat_rate}}%:</Data></Cell>
+    <Cell ss:StyleID="tot"><Data ss:Type="String">{{vat_amount}}</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="totl" ss:MergeAcross="5"><Data ss:Type="String">Tổng thanh toán:</Data></Cell>
+    <Cell ss:StyleID="grand"><Data ss:Type="String">{{grand_total}}</Data></Cell>
+   </Row>
+   <Row/>
+   <Row>
+    <Cell ss:StyleID="lbl"><Data ss:Type="String">{{?remark}}Ghi chú:</Data></Cell>
+    <Cell ss:MergeAcross="5"><Data ss:Type="String">{{remark}}{{/remark}}</Data></Cell>
+   </Row>
+   <Row/>
+   <Row>
+    <Cell ss:Index="2" ss:StyleID="sign" ss:MergeAcross="1"><Data ss:Type="String">Người lập phiếu</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="sign" ss:MergeAcross="1"><Data ss:Type="String">Khách hàng</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

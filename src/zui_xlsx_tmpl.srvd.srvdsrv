@@ -1,0 +1,5 @@
+@EndUserText.label: 'SD - XLSX template maintenance'
+@ObjectModel.leadingEntity.name: 'ZC_XLSX_TMPL'
+define service ZUI_XLSX_TMPL provider contracts odata_v4_ui {
+  expose ZC_XLSX_TMPL as Template;
+}
